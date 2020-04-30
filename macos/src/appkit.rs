@@ -146,6 +146,10 @@ impl NSApplication {
     pub fn run(&self) {
         unsafe { msg_send![self.ptr, run] }
     }
+
+    pub fn terminate<T: ObjCClass>(&self, sender: &T)   {
+        unsafe { msg_send![self.ptr, terminate:sender.ptr()] }
+    }
 }
 
 impl NSControl {
